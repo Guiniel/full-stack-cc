@@ -10,7 +10,7 @@ export default function HomePage() {
     const fetchSongs = async () => {
       try {
 
-        const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/song`);
+        const res = await fetch(`${process.env.BACKEND_URL}/song`);
 
         const { songData } = await res.json(); // Aquí es donde se hace el cambio
         if (Array.isArray(songData)) {
