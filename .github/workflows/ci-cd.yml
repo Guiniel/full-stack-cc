@@ -10,9 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Limpiar caché de npm
-        run: npm cache clean --force
-        
+
       - name: Checkout code
         uses: actions/checkout@v2
 
@@ -45,10 +43,10 @@ jobs:
           docker build -t ${{ secrets.DOCKER_USER }}/backend:latest ./backend
           docker push ${{ secrets.DOCKER_USER }}/backend:latest
 
-      - name: Build and push frontend Docker image
-        run: |
-          docker build -t ${{ secrets.DOCKER_USER }}/frontend:latest ./frontend
-          docker push ${{ secrets.DOCKER_USER }}/frontend:latest
+      # - name: Build and push frontend Docker image
+      #   run: |
+      #     docker build -t ${{ secrets.DOCKER_USER }}/frontend:latest ./frontend
+      #     docker push ${{ secrets.DOCKER_USER }}/frontend:latest
 
       - name: Set up Kubernetes
         uses: azure/k8s-set-context@v1
