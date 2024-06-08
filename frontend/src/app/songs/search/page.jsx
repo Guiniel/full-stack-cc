@@ -6,7 +6,7 @@ const Busqueda = () => {
   dotenv.config();
   const [searchTerm, setSearchTerm] = useState(""); 
   const [songs, setSongs] = useState([]);
-  const url_backend = process.env.NEXT_PUBLIC_BACKEND_URL;
+  const url_backend = process.env.BACKEND_URL;
   const handleSubmit = async (e) => { 
     e.preventDefault(); 
     try {

@@ -12,7 +12,7 @@ const NewSong = () => {
 });
 const params = useParams(); 
 const router = useRouter();
-const url_backend = process.env.NEXT_PUBLIC_BACKEND_URL;
+const url_backend = process.env.BACKEND_URL;
 const [isSubmitting, setIsSubmitting] = useState(false); 
 const [errors, setErrors] = useState({});
 
