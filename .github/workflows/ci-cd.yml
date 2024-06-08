@@ -56,7 +56,7 @@ jobs:
 
       - name: Deploy to Kubernetes
         run: |
-          kubectl apply -f k8s/db-deployment.yml
+          kubectl apply -f k8s/mongo-deployment.yml
           kubectl apply -f k8s/backend-deployment.yml
           kubectl apply -f k8s/frontend-deployment.yml
 
