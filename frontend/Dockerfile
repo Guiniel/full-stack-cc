@@ -1,11 +1,11 @@
-FROM node:18-alpine AS base
+FROM node:20.14.0-alpine3.19 AS base
 WORKDIR /app
 COPY package*.json ./
 RUN npm ci --only=production
 COPY . .
 RUN npm run build
 
-FROM node:18-alpine AS production
+FROM node:20.14.0-alpine3.19 AS production
 WORKDIR /app
 COPY --from=base /app/node_modules ./node_modules
 COPY --from=base /app/.next ./.next
