@@ -40,12 +40,12 @@ jobs:
       - name: Build and push frontend Docker image
         run: |
           docker build -t ${{ secrets.DOCKER_USER }}/frontend:latest ./frontend
-          docker push ${{ secrets.DOCKER_USERNAME }}/frontend:latest
+          docker push ${{ secrets.DOCKER_USER }}/frontend:latest
 
       - name: Build and push backend Docker image
         run: |
           docker build -t ${{ secrets.DOCKER_USER }}/backend:latest ./backend
-          docker push ${{ secrets.DOCKER_USERNAME }}/backend:latest
+          docker push ${{ secrets.DOCKER_USER }}/backend:latest
 
       - name: Set up Kubernetes
         uses: azure/k8s-set-context@v1
