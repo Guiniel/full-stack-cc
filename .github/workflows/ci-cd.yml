@@ -48,11 +48,11 @@ jobs:
       #     docker build -t ${{ secrets.DOCKER_USER }}/frontend:latest ./frontend
       #     docker push ${{ secrets.DOCKER_USER }}/frontend:latest
           
-      - name: Set up Kubernetes
-        uses: azure/k8s-set-context@v4
-        with:
-          method: kubeconfig
-          kubeconfig: ${{ secrets.KUBE_CONFIG_DATA }}
+      # - name: Set up Kubernetes
+      #   uses: azure/k8s-set-context@v4
+      #   with:
+      #     method: kubeconfig
+      #     kubeconfig: ${{ secrets.KUBE_CONFIG_DATA }}
 
       - name: Deploy to Kubernetes
         run: |
