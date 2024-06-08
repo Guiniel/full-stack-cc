@@ -1,7 +1,7 @@
 FROM node:20.14.0-alpine3.19 AS base
 WORKDIR /app
 COPY package*.json ./
-RUN npm ci --only=production
+RUN npm install --omit=dev
 COPY . .
 RUN npm run build
 
