@@ -7,6 +7,8 @@ RUN npm run build
 
 FROM node:20.14.0-alpine3.19 AS production
 WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm install --only=production
 COPY --from=base /app/node_modules ./node_modules
 COPY --from=base /app/.next ./.next
 COPY --from=base /app/public ./public
