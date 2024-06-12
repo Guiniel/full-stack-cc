@@ -43,10 +43,10 @@ jobs:
           docker build -t ${{ secrets.DOCKER_USER }}/backend:latest ./backend
           docker push ${{ secrets.DOCKER_USER }}/backend:latest
 
-      # - name: Build and push frontend Docker image
-      #   run: |
-      #     docker build -t ${{ secrets.DOCKER_USER }}/frontend:latest ./frontend
-      #     docker push ${{ secrets.DOCKER_USER }}/frontend:latest
+      - name: Build and push frontend Docker image
+        run: |
+          docker build -t ${{ secrets.DOCKER_USER }}/frontend:latest ./frontend
+          docker push ${{ secrets.DOCKER_USER }}/frontend:latest
           
       # - name: Set up Kubernetes
       #   uses: azure/k8s-set-context@v4
@@ -54,14 +54,14 @@ jobs:
       #     method: kubeconfig
       #     kubeconfig: ${{ secrets.KUBE_CONFIG_DATA }}
 
-      - name: Deploy to Kubernetes
-        run: |
-          kubectl apply -f k8s/mongo-deployment.yml
-          kubectl apply -f k8s/backend-deployment.yml
-          kubectl apply -f k8s/frontend-deployment.yml
+      # - name: Deploy to Kubernetes
+      #   run: |
+      #     kubectl apply -f k8s/mongo-deployment.yml
+      #     kubectl apply -f k8s/backend-deployment.yml
+      #     kubectl apply -f k8s/frontend-deployment.yml
 
-      - name: Verify Deployment
-        run: |
-          kubectl rollout status deployment/frontend-deployment
-          kubectl rollout status deployment/backend-deployment
-          kubectl get services
+      # - name: Verify Deployment
+      #   run: |
+      #     kubectl rollout status deployment/frontend-deployment
+      #     kubectl rollout status deployment/backend-deployment
+      #     kubectl get services
