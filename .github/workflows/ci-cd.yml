@@ -29,10 +29,6 @@ jobs:
           microk8s enable dns storage
           EOF
         shell: bash
-      
-      - name: Enable DNS and storage
-        run: |
-          microk8s enable dns storage
 
       - name: Log in to DockerHub
         uses: docker/login-action@v1
