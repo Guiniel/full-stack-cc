@@ -60,6 +60,9 @@ jobs:
         
       - name: Deploy to Kubernetes using MicroK8s
         run: |
-          microk8s kubectl apply -f k8s/mongo-deployment.yml
-          microk8s kubectl apply -f k8s/backend-deployment.yml
-          microk8s kubectl apply -f k8s/frontend-deployment.yml
+          newgrp microk8s <<EOF
+            microk8s kubectl apply -f k8s/mongo-deployment.yml
+            microk8s kubectl apply -f k8s/backend-deployment.yml
+            microk8s kubectl apply -f k8s/frontend-deployment.yml
+          EOF
+        shell: bash
