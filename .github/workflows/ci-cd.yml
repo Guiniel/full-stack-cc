@@ -23,19 +23,13 @@ jobs:
       - name: Install MicroK8s
         run: |
           sudo snap install microk8s --classic
-          sudo microk8s status --wait-ready
-          while ! getent group snap_microk8s; do
-            echo "Esperando a que el grupo snap_microk8s esté disponible..."
-            sleep 5
-          done
-          GROUP=snap_microk8s 
-          sudo usermod -a -G $GROUP $USER
-          newgrp $GROUP
-          mkdir ~/.kube
-          sudo chown -f -R $USER ~/.kube
-          microk8s status
-          microk8s kubectl get nodes
-          microk8s kubectl get services
+          sudo usermod -a -G microk8s $USER
+          newgrp microk8s
+          microk8s status --wait-ready
+      
+      - name: Enable DNS and storage
+        run: |
+          microk8s enable dns storage
 
       - name: Log in to DockerHub
         uses: docker/login-action@v1
