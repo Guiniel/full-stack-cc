@@ -66,3 +66,10 @@ jobs:
             microk8s kubectl apply -f k8s/frontend-deployment.yml
           EOF
         shell: bash
+      
+      - name: Ver pods
+        run: |
+          newgrp microk8s <<EOF
+            microk8s kubectl get pods
+          EOF
+        shell: bash
