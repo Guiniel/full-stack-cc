@@ -24,7 +24,9 @@ jobs:
         run: |
           sudo snap install microk8s --classic
           sudo usermod -a -G microk8s $USER
-          sudo chown -R $USER ~/.kube
+          if [ -d "$HOME/.kube" ]; then
+            sudo chown -R $USER $HOME/.kube
+          fi
           newgrp microk8s
         shell: bash
       
