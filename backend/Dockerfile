@@ -12,5 +12,6 @@ COPY package.json package-lock.json ./
 RUN npm install --only=production
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/tsconfig.build.json ./tsconfig.build.json
+ENV MONGODB_URI=mongodb://mongodb:27017
 EXPOSE 3001
 CMD ["node", "dist/main"]
